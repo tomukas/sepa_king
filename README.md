@@ -177,6 +177,10 @@ sct.add_transaction(
   # String, max. 140 char
   remittance_information: 'Rechnung vom 22.08.2013',
 
+  #OPTIONAL Structured remittance information. Unstructured remittance_information is ignored if this value is set.
+  # String max. 28 char
+  remittance_information_structured: '301',
+
   # OPTIONAL: Requested execution date, in German "Ausführungstermin"
   # Date
   requested_date: Date.new(2013,9,5),

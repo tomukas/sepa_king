@@ -94,7 +94,6 @@ module SEPA
                   builder.CdOrPrtry do
                     builder.Cd('SCOR')
                   end
-                  builder.Issuer(nil)
                 end
                 builder.Ref(transaction.remittance_information_structured)
               end
