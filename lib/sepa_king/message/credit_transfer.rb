@@ -86,7 +86,22 @@ module SEPA
             builder.IBAN(transaction.iban)
           end
         end
-        if transaction.remittance_information
+        if transaction.remittance_information_structured
+          builder.RmtInf do
+            builder.Strd do
+              builder.CdtrRefInf do
+                builder.Tp do
+                  builder.CdOrPrtry do
+                    builder.Cd('SCOR')
+                  end
+                  builder.Issuer(nil)
+                end
+                builder.Ref(transaction.remittance_information_structured)
+              end
+            end
+            builder.Ustrd(transaction.remittance_information_structured)
+          end
+        elsif transaction.remittance_information
           builder.RmtInf do
             builder.Ustrd(transaction.remittance_information)
           end
