@@ -86,7 +86,7 @@ module SEPA
             builder.IBAN(transaction.iban)
           end
         end
-        if transaction.remittance_information_structured
+        if transaction.remittance_information_structured.present?
           builder.RmtInf do
             builder.Strd do
               builder.CdtrRefInf do
@@ -99,7 +99,6 @@ module SEPA
                 builder.Ref(transaction.remittance_information_structured)
               end
             end
-            builder.Ustrd(transaction.remittance_information_structured)
           end
         elsif transaction.remittance_information
           builder.RmtInf do
