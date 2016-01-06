@@ -59,9 +59,9 @@ module SEPA
       raise ArgumentError.new("Schema #{schema_name} is unknown!") unless self.known_schemas.include?(schema_name)
 
       case schema_name
-        when PAIN_001_002_03, PAIN_008_002_02, PAIN_001_001_03
+        when PAIN_001_002_03, PAIN_008_002_02
           account.bic.present? && transactions.all? { |t| t.schema_compatible?(schema_name) }
-        when PAIN_001_003_03, PAIN_008_003_02, PAIN_008_001_02
+        when PAIN_001_003_03, PAIN_008_003_02, PAIN_008_001_02, PAIN_001_001_03
           transactions.all? { |t| t.schema_compatible?(schema_name) }
       end
     end
@@ -70,7 +70,7 @@ module SEPA
 
     # Unique identifer for the whole message
     def message_identification
-      @message_identification ||= "SEPA-KING/#{Time.now.to_i}"
+      @message_identification ||= "ITAX.LT/#{Time.now.to_i}"
     end
 
     # Returns the id of the batch to which the given transaction belongs
