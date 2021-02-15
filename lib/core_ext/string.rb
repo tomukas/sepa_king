@@ -22,6 +22,6 @@
 
 String.class_eval do
   def i18n_transliterate(replacement='?')
-    I18n.transliterate(self, replacement)
+    I18n.transliterate(self)
   end
 end
